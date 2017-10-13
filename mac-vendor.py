@@ -1,13 +1,12 @@
 
 # Mac to vendor lookup script
-#
 # lookup.txt which is a "sh ip arp" output from a cisco L3 switch / router
 #
 # aaslev 2017-10-05
-
 ######################################
 # import libraries
 ######################################
+
 import os
 import re #regexp library
 import requests
@@ -16,6 +15,7 @@ from datetime import datetime
 ######################################
 # Define variables
 ######################################
+
 url = "https://code.wireshark.org/review/gitweb?p=wireshark.git;a=blob_plain;f=manuf"
 startTime = datetime.now() #Set start time for script
 #rstring = r'([0-9a-fA-F]{4}.[0-9a-fA-F]{4}.[0-9a-fA-F]{4})' # <- old regexp
@@ -26,6 +26,7 @@ mac_to_vendor = [] #define list
 ######################################
 # Define Functions
 ######################################
+
 def MAC_database():
     if os.path.isfile('mac.txt'):
         print "MAC Database exists, initiating main program >\n"
@@ -46,13 +47,13 @@ def MAC_compare():
 
             if mac == mac3:
                 print mac_address.group(), "\t", mac2[1]
+                break
 
 ######################################
 # main program
 ######################################
 
 os.system('clear')
-
 MAC_database() #check if mac "database" exists, otherwise download it.
 
 print "Mac address\tCorporation\n-----------\t-----------"
